@@ -289,9 +289,8 @@ h6 {
 .logo-img {
     height: 60px;
     /* upscale the logo */
-    /* remove dark background, assuming logo bg is black/dark */
-    /* If logo bg is white, it will need: filter: invert(1); mix-blend-mode: screen; */
     border-radius: 0;
+    filter: brightness(0) invert(1);
     transition: var(--transition-fast);
 }
 
@@ -595,24 +594,21 @@ h6 {
     overflow: hidden;
     position: relative;
     z-index: 1;
-}
-
-.marquee-track {
     display: flex;
-    width: max-content;
-    animation: marquee 30s linear infinite;
 }
 
-.marquee-track:hover {
+.marquee-container:hover .marquee-content {
     animation-play-state: paused;
 }
 
 .marquee-content {
     display: flex;
+    flex-shrink: 0;
     align-items: center;
     gap: 60px;
     padding-right: 60px;
     /* match gap for seamless repeat */
+    animation: marquee 30s linear infinite;
 }
 
 .marquee-content img {
@@ -632,7 +628,7 @@ h6 {
     }
 
     100% {
-        transform: translateX(-50%);
+        transform: translateX(-100%);
     }
 }
 
